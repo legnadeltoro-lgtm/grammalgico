@@ -613,11 +613,6 @@ nav.scrolled {
     opacity: 1;
 }
 
-.form-label,
-.form-line {
-    display: none;
-}
-
 .submit-btn {
     align-self: stretch;
     display: inline-flex;
