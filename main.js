@@ -199,21 +199,4 @@
         });
     }
 
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        window.addEventListener('scroll', function () {
-            hero.style.backgroundPositionY = window.pageYOffset * 0.3 + 'px';
-        }, { passive: true });
-    }
-
-    document.querySelectorAll('.book-card').forEach(card => {
-        card.addEventListener('mousemove', function (e) {
-            const rect = this.getBoundingClientRect();
-            const x = ((e.clientX - rect.left) / rect.width) * 100;
-            const y = ((e.clientY - rect.top) / rect.height) * 100;
-            this.style.setProperty('--mx', x + '%');
-            this.style.setProperty('--my', y + '%');
-        });
-    });
-
 })();
