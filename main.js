@@ -122,6 +122,9 @@
         link.addEventListener('click', closeMobileMenu);
     });
 
+    /* --- EmailJS --- */
+    emailjs.init('6lbairgGzunhw-8n-');
+
     /* --- Modern contact form --- */
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
@@ -186,7 +189,11 @@
 
             submitBtn.classList.add('is-sending');
 
-            setTimeout(function () {
+            emailjs.send('service_rc0jrwh', 'template_hltrdtf', {
+                from_name: nameInput.value.trim(),
+                from_email: emailInput.value.trim(),
+                message: messageInput.value.trim(),
+            }).then(function () {
                 submitBtn.classList.remove('is-sending');
                 submitBtn.classList.add('is-sent');
 
@@ -195,7 +202,10 @@
                     contactForm.reset();
                     [nameInput, emailInput, messageInput].forEach(i => setError(i, false));
                 }, 3000);
-            }, 1200);
+            }).catch(function () {
+                submitBtn.classList.remove('is-sending');
+                alert('Error al enviar. Intenta de nuevo.');
+            });
         });
     }
 
