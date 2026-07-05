@@ -907,7 +907,6 @@ nav.scrolled {
     .book-featured-title {
         font-size: 20px;
     }
-    .book-featured-img {
     .book-featured-actions {
         flex-direction: column;
         align-items: stretch;
@@ -962,9 +961,6 @@ nav.scrolled {
     .book-featured-title {
         font-size: 18px;
     }
-    .contact-container {
-        gap: 44px;
-    }
     .contact-form {
         padding: 24px 18px;
     }
@@ -973,9 +969,5 @@ nav.scrolled {
     }
     .about-grid-item {
         padding: 14px;
-    }
-    .footer-container {
-        grid-template-columns: 1fr;
-        gap: 28px;
     }
 }
