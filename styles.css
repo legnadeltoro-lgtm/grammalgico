@@ -614,46 +614,47 @@ nav.scrolled {
 }
 
 .submit-btn {
+    position: relative;
     align-self: stretch;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
     padding: 14px 36px;
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 50px;
     cursor: pointer;
-    transition: all 0.4s ease;
+    transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
     color: #ffffff;
     font-family: 'Inter', sans-serif;
     font-size: 13px;
     letter-spacing: 4px;
     text-transform: uppercase;
     font-weight: 500;
+    min-height: 52px;
 }
 
-.btn-icon {
+.submit-btn .btn-content {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: opacity 0.4s ease;
+}
+
+.submit-btn .btn-icon {
     font-size: 14px;
     color: rgba(255, 255, 255, 0.6);
-    transition: all 0.4s ease;
 }
 
-.btn-text {
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    color: #ffffff;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    font-weight: 500;
-    transition: all 0.4s ease;
-}
-
-.btn-success {
+.submit-btn .btn-success {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: 'Inter', sans-serif;
     font-size: 13px;
     color: #c9a96e;
@@ -662,6 +663,18 @@ nav.scrolled {
     font-weight: 400;
     opacity: 0;
     transition: opacity 0.4s ease;
+}
+
+.submit-btn.is-sending .btn-content {
+    opacity: 0.3;
+}
+
+.submit-btn.is-sent .btn-content {
+    opacity: 0;
+}
+
+.submit-btn.is-sent .btn-success {
+    opacity: 1;
 }
 
 .submit-btn:hover {
@@ -674,25 +687,10 @@ nav.scrolled {
 
 .submit-btn:hover .btn-text {
     color: #0a0a0a;
-    letter-spacing: 5px;
 }
 
 .submit-btn:hover .btn-icon {
     color: #0a0a0a;
-}
-
-.submit-btn.is-sending .btn-text,
-.submit-btn.is-sending .btn-icon {
-    opacity: 0.3;
-}
-
-.submit-btn.is-sent .btn-text,
-.submit-btn.is-sent .btn-icon {
-    opacity: 0;
-}
-
-.submit-btn.is-sent .btn-success {
-    opacity: 1;
 }
 
 /* --- Footer --- */
@@ -764,6 +762,17 @@ nav.scrolled {
     font-weight: 300;
 }
 
+.footer-dev {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.footer-dev:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
+
 /* --- Animations --- */
 .fade-in {
     opacity: 0;
@@ -799,6 +808,11 @@ nav.scrolled {
     }
     .section {
         padding: 72px 30px;
+    }
+    .book-featured {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 30px;
     }
     .about-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -928,6 +942,9 @@ nav.scrolled {
     .about-dropcap {
         font-size: 60px;
     }
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
     .about-grid-item {
         padding: 18px;
     }
@@ -937,6 +954,9 @@ nav.scrolled {
 }
 
 @media (max-width: 480px) {
+    body::before {
+        background-attachment: scroll;
+    }
     nav {
         padding: 14px 18px;
     }
@@ -951,6 +971,9 @@ nav.scrolled {
     .hero-desc {
         font-size: 14px;
     }
+    .hero-content {
+        padding: 0 20px;
+    }
     .section-title {
         font-size: 18px;
         letter-spacing: 5px;
@@ -964,7 +987,11 @@ nav.scrolled {
     .contact-form {
         padding: 24px 18px;
     }
+    .contact-container {
+        padding: 0 10px;
+    }
     .about-grid {
+        grid-template-columns: 1fr;
         gap: 12px;
     }
     .about-grid-item {

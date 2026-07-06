@@ -189,9 +189,9 @@
 
             submitBtn.classList.add('is-sending');
 
-            emailjs.send('service_rc0jrwh', 'template_hltrdtf', {
-                from_name: nameInput.value.trim(),
-                from_email: emailInput.value.trim(),
+            emailjs.send('service_rc0jrwh', 'template_b79qri9', {
+                name: nameInput.value.trim(),
+                title: emailInput.value.trim(),
                 message: messageInput.value.trim(),
             }).then(function () {
                 submitBtn.classList.remove('is-sending');
@@ -202,7 +202,8 @@
                     contactForm.reset();
                     [nameInput, emailInput, messageInput].forEach(i => setError(i, false));
                 }, 3000);
-            }).catch(function () {
+            }).catch(function (error) {
+                console.error('EmailJS error:', error);
                 submitBtn.classList.remove('is-sending');
                 alert('Error al enviar. Intenta de nuevo.');
             });
