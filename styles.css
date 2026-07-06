@@ -132,25 +132,26 @@ nav.scrolled {
 .hamburger {
     display: none;
     flex-direction: column;
-    gap: 5px;
+    gap: 6px;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 5px;
+    padding: 6px;
     z-index: 1001;
 }
 
 .hamburger span {
     display: block;
-    width: 22px;
-    height: 1.5px;
+    width: 24px;
+    height: 2.5px;
     background: #ffffff;
+    border-radius: 2px;
     transition: all 0.3s ease;
     transform-origin: center;
 }
 
 .hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(4px, 5px);
+    transform: rotate(45deg) translate(5px, 5px);
 }
 
 .hamburger.active span:nth-child(2) {
@@ -158,7 +159,7 @@ nav.scrolled {
 }
 
 .hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(4px, -5px);
+    transform: rotate(-45deg) translate(5px, -5px);
 }
 
 /* --- Hero --- */
@@ -262,19 +263,35 @@ nav.scrolled {
     letter-spacing: 5px;
 }
 
-.scroll-indicator {
+.scroll-hint {
     position: absolute;
     bottom: 36px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 2;
-    animation: scrollBounce 2.4s ease-in-out infinite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
     opacity: 0.5;
     transition: opacity 0.3s ease;
 }
 
-.scroll-indicator:hover {
+.scroll-hint:hover {
     opacity: 0.8;
+}
+
+.scroll-hint-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+.scroll-indicator {
+    animation: scrollBounce 2.4s ease-in-out infinite;
 }
 
 .scroll-indicator::after {
@@ -950,6 +967,29 @@ nav.scrolled {
     }
     .footer {
         padding: 40px 24px 24px;
+    }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+    .hero {
+        height: 100dvh;
+        justify-content: flex-start;
+        padding-top: 90px;
+    }
+    .hero-content {
+        animation: none;
+    }
+    .hero-desc {
+        margin-bottom: 24px;
+    }
+    .scroll-hint-text {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+    .scroll-hint {
+        bottom: 12px;
+        gap: 4px;
+        opacity: 0.35;
     }
 }
 
